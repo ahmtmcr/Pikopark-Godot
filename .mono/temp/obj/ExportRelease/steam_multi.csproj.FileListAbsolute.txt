@@ -1,0 +1,8 @@
+D:\Godot Projects\steam_multi\.mono\temp\bin\ExportRelease\steam_multi.dll
+D:\Godot Projects\steam_multi\.mono\temp\bin\ExportRelease\steam_multi.pdb
+D:\Godot Projects\steam_multi\.mono\temp\obj\ExportRelease\steam_multi.csproj.AssemblyReference.cache
+D:\Godot Projects\steam_multi\.mono\temp\obj\ExportRelease\steam_multi.AssemblyInfoInputs.cache
+D:\Godot Projects\steam_multi\.mono\temp\obj\ExportRelease\steam_multi.AssemblyInfo.cs
+D:\Godot Projects\steam_multi\.mono\temp\obj\ExportRelease\steam_multi.csproj.CoreCompileInputs.cache
+D:\Godot Projects\steam_multi\.mono\temp\obj\ExportRelease\steam_multi.dll
+D:\Godot Projects\steam_multi\.mono\temp\obj\ExportRelease\steam_multi.pdb
