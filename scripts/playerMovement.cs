@@ -9,11 +9,14 @@ public class playerMovement : KinematicBody2D
   
     
     int speed = 200;
+    float gravity = 500f;
     bool sendPacketReady;
     Vector2 velocity;
     KinematicBody2D player1;
     KinematicBody2D player2;
     Timer sendPacketTimer;
+    Sprite playerSprite;
+
 
     Global global;
     
@@ -24,28 +27,59 @@ public class playerMovement : KinematicBody2D
         player1 = GetNode("/root/game/player1") as KinematicBody2D;
         player2 = GetNode("/root/game/player2") as KinematicBody2D;
         sendPacketTimer = GetNode("/root/game/sendPacketTimer") as Timer;
+        playerSprite = GetNode("Sprite") as Sprite;
 
         sendPacketTimer.Connect("timeout", this, "_on_timeout");
     }
 
    
    //-------------------LOCAL MOVEMENT--------------------
-    public override void _Input(InputEvent @event)
+   /* public override void _Input(InputEvent @event)
     {
         velocity = new Vector2();
+        
+        GD.Print(IsOnFloor());
+        GD.Print(gravity);
+        
         if(Input.IsActionPressed("ui_right"))
             velocity.x +=1;
         if(Input.IsActionPressed("ui_left"))
             velocity.x -=1;
-        if(Input.IsActionPressed("ui_down"))
-            velocity.y +=1;
-        if(Input.IsActionPressed("ui_up"))
-            velocity.y -=1;
-        
-        velocity = velocity.Normalized() * speed;
-    }
+        if(Input.IsActionPressed("ui_up") && IsOnFloor())
+            velocity.y = -10;
 
-    public override void _PhysicsProcess(float delta) => velocity = MoveAndSlide(velocity);
+    
+        
+        velocity = velocity.Normalized() * speed + gravity;
+    }*/
+
+    public override void _PhysicsProcess(float delta) 
+    {
+        velocity.y += delta * gravity;
+
+        if (Input.IsActionPressed("ui_left"))
+        {
+            velocity.x = -speed;
+            playerSprite.FlipH = true;
+        }
+        else if (Input.IsActionPressed("ui_right"))
+        {
+            velocity.x = speed;
+            playerSprite.FlipH = false;
+        }
+        else
+        {
+            velocity.x = 0;
+        }
+
+        if(IsOnFloor() && Input.IsActionPressed("ui_up"))
+        {
+            velocity.y = -200;
+        }
+
+       
+        MoveAndSlide(velocity, new Vector2(0, -1));
+    }
     
         
     
