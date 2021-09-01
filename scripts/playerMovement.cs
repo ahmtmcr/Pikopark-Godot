@@ -7,29 +7,64 @@ using FlatBuffers;
 public class playerMovement : KinematicBody2D
 {
   
+<<<<<<< Updated upstream
     
     int speed = 200;
+=======
+   
+    int speed = 150;
+    float gravity = 500f;
+>>>>>>> Stashed changes
     bool sendPacketReady;
     Vector2 velocity;
     KinematicBody2D player1;
     KinematicBody2D player2;
+    
     Timer sendPacketTimer;
+<<<<<<< Updated upstream
+=======
+    AnimatedSprite playerSprite;
+
+
+
+
+    
+
+    
+    
+    
+
+>>>>>>> Stashed changes
 
     Global global;
     
     public override void _Ready()
     {
+       
+        
+        
+        
         global = GetNode("/root/Global") as Global;
 
         player1 = GetNode("/root/game/player1") as KinematicBody2D;
         player2 = GetNode("/root/game/player2") as KinematicBody2D;
         sendPacketTimer = GetNode("/root/game/sendPacketTimer") as Timer;
+<<<<<<< Updated upstream
+=======
+        playerSprite = GetNode("Sprite") as AnimatedSprite;
+        
+       
+       
+>>>>>>> Stashed changes
 
         sendPacketTimer.Connect("timeout", this, "_on_timeout");
+    
     }
 
+    
    
    //-------------------LOCAL MOVEMENT--------------------
+<<<<<<< Updated upstream
     public override void _Input(InputEvent @event)
     {
         velocity = new Vector2();
@@ -46,18 +81,88 @@ public class playerMovement : KinematicBody2D
     }
 
     public override void _PhysicsProcess(float delta) => velocity = MoveAndSlide(velocity);
-    
+=======
+
+
+     public override void _PhysicsProcess(float delta) 
+    {
         
+       
+       
+       
+       
+        velocity.y += delta * gravity;
+
+        if (Input.IsActionPressed("ui_left"))
+        {
+            velocity.x = -speed;
+            playerSprite.FlipH = true;
+            if(IsOnFloor())
+            {
+                playerSprite.Play("walk");
+            }
+           
+        }
+        else if (Input.IsActionPressed("ui_right"))
+        {
+            velocity.x = speed;
+            playerSprite.FlipH = false;
+            
+            if(IsOnFloor())
+            {
+                playerSprite.Play("walk");
+            }
+        }
+        else
+        {
+            velocity.x = 0;
+            playerSprite.Play("idle");
+        }
+
+        if(IsOnFloor() && Input.IsActionPressed("ui_up"))
+        {
+            velocity.y = -200;
+            playerSprite.Play("jump");
+        }
+        if(!IsOnFloor())
+        {
+            speed = 100;
+        }
+        else
+        {
+            speed = 200;
+        }
+
+       
+        MoveAndSlide(velocity, new Vector2(0, -1));
+       
+        
+        
+        
+    }
+
     
 
-     //-------------------NETWORKED MOVEMENT--------------------
+ 
 
-     
-     public override void _Process(float delta) => transferPlayerMovement();
+
+
+>>>>>>> Stashed changes
+    
+    
+   
+    
+
+    
+    
+    
+     //-------------------NETWORKED MOVEMENT--------------------
+  public override void _Process(float delta) => transferPlayerMovement();
      
      
   private void transferPlayerMovement()
     {
+       
         if ( sendPacketReady )
         {
             // Create a new packet with movement data
@@ -87,7 +192,7 @@ public class playerMovement : KinematicBody2D
 
     private void _on_timeout() => sendPacketReady = true;
    
-   
+  
 
     
 }

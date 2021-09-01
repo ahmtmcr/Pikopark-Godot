@@ -9,8 +9,8 @@ public class packetReceiver : Node
     protected Callback<P2PSessionRequest_t> Callback_P2PSessionRequest;
     protected Callback<P2PSessionConnectFail_t>  Callback_P2PSessionConnectFailed;
 
-    KinematicBody2D player1;
-    KinematicBody2D player2;
+    RigidBody2D player1;
+    RigidBody2D player2;
 
 
     Global global;
@@ -24,8 +24,8 @@ public class packetReceiver : Node
         Callback_P2PSessionRequest = Callback<P2PSessionRequest_t>.Create(OnP2PSessionRequest);
         Callback_P2PSessionConnectFailed = Callback<P2PSessionConnectFail_t>.Create(OnP2PSessionConnectFailed);
         
-        player1 = GetNode("/root/game/player1") as KinematicBody2D;
-        player2 = GetNode("/root/game/player2") as KinematicBody2D;    
+        player1 = GetNode("/root/game/player1") as RigidBody2D;
+        player2 = GetNode("/root/game/player2") as RigidBody2D;    
 
 
     }
