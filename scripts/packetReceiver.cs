@@ -78,20 +78,24 @@ public class packetReceiver : Node
      private void moveOtherPlayer(NetworkPacket.OtherPlayer otherPlayer)
      {
          NetworkPacket.Vec2 pos = otherPlayer.Pos.Value;
-         var a = otherPlayer.Anim[0].ToString();
-         var b = otherPlayer.Anim[1].ToString();
+         var x = otherPlayer.Anim;
+         bool z = otherPlayer.Direction;
+         
+         
          
          
 
          if(global.playingAsHost)
          {
              player2.Transform = new Transform2D(0, new Vector2(pos.X, pos.Y));
-             player2Anim.Animation = b;
+             player2Anim.Animation = x;
+             player2Anim.FlipH = z;
          }
          else
          {
              player1.Transform = new Transform2D(0, new Vector2(pos.X, pos.Y));
-             player2Anim.Animation = a;
+             player1Anim.Animation = x;
+             player1Anim.FlipH = z;
          }
      }
   

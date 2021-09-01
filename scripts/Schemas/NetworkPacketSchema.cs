@@ -46,11 +46,13 @@ public struct OtherPlayer : IFlatbufferObject
   public ArraySegment<byte>? GetAnimBytes() { return __p.__vector_as_arraysegment(8); }
 #endif
   public byte[] GetAnimArray() { return __p.__vector_as_array<byte>(8); }
+  public bool Direction { get { int o = __p.__offset(10); return o != 0 ? 0!=__p.bb.Get(o + __p.bb_pos) : (bool)false; } }
 
-  public static void StartOtherPlayer(FlatBufferBuilder builder) { builder.StartTable(3); }
+  public static void StartOtherPlayer(FlatBufferBuilder builder) { builder.StartTable(4); }
   public static void AddAction(FlatBufferBuilder builder, int action) { builder.AddInt(0, action, 0); }
   public static void AddPos(FlatBufferBuilder builder, Offset<NetworkPacket.Vec2> posOffset) { builder.AddStruct(1, posOffset.Value, 0); }
   public static void AddAnim(FlatBufferBuilder builder, StringOffset animOffset) { builder.AddOffset(2, animOffset.Value, 0); }
+  public static void AddDirection(FlatBufferBuilder builder, bool direction) { builder.AddBool(3, direction, false); }
   public static Offset<NetworkPacket.OtherPlayer> EndOtherPlayer(FlatBufferBuilder builder) {
     int o = builder.EndTable();
     return new Offset<NetworkPacket.OtherPlayer>(o);

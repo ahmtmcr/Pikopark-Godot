@@ -21,6 +21,8 @@ public class playerMovement : KinematicBody2D
     Timer sendPacketTimer;
     AnimatedSprite playerSprite;
 
+    string a;
+    bool b;
 
 
     
@@ -65,7 +67,8 @@ public class playerMovement : KinematicBody2D
         
        
         
-        
+        a = playerSprite.Animation;
+        b = playerSprite.FlipH;
        
        
         velocity.y += delta * gravity;
@@ -148,8 +151,10 @@ public class playerMovement : KinematicBody2D
         {
             // Create a new packet with movement data
             FlatBufferBuilder builder = new FlatBufferBuilder(8);
-            var a = builder.CreateString(player1Anim.Animation);
-            var b = builder.CreateString(player2Anim.Animation);
+            var x = builder.CreateString(a);
+            
+            
+            
             NetworkPacket.OtherPlayer.StartOtherPlayer(builder);
 
             
@@ -158,7 +163,8 @@ public class playerMovement : KinematicBody2D
             if (global.playingAsHost)
             {
                 NetworkPacket.OtherPlayer.AddPos(builder, NetworkPacket.Vec2.CreateVec2(builder, player1.Transform.origin.x, player1.Transform.origin.y));
-                NetworkPacket.OtherPlayer.AddAnim(builder, a);
+                NetworkPacket.OtherPlayer.AddAnim(builder,x);
+                NetworkPacket.OtherPlayer.AddDirection(builder, b);
             }
                 
                 
@@ -166,7 +172,8 @@ public class playerMovement : KinematicBody2D
             else
             {
                 NetworkPacket.OtherPlayer.AddPos(builder, NetworkPacket.Vec2.CreateVec2(builder, player2.Transform.origin.x, player2.Transform.origin.y));
-                NetworkPacket.OtherPlayer.AddAnim(builder, b);
+                NetworkPacket.OtherPlayer.AddAnim(builder, x);
+                NetworkPacket.OtherPlayer.AddDirection(builder, b);
             }
                 
 
