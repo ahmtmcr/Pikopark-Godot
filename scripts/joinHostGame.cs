@@ -141,6 +141,7 @@ public class joinHostGame : Node
             //tree to steam id
             joinID = (CSteamID)ulong.Parse(invitationTree.GetSelected().GetText(1), System.Globalization.NumberStyles.None);
             SteamMatchmaking.JoinLobby(joinID);
+            chatBox.AddText("\n " + SteamFriends.GetPersonaName() + "joined the lobby");
 
             joinSelectedButton.Text = "Leave Lobby";
         }
@@ -172,7 +173,7 @@ public class joinHostGame : Node
 
     private void OnLobbyChatUpdate(LobbyChatUpdate_t update)
     {
-        chatBox.AddText("\n" + SteamFriends.GetFriendPersonaName((CSteamID)update.m_ulSteamIDUserChanged) +  " made a change in the lobby. Change: " + update.m_rgfChatMemberStateChange);
+        chatBox.AddText("\n" + SteamFriends.GetFriendPersonaName((CSteamID)update.m_ulSteamIDUserChanged) +  " joined the lobby. Change: " + update.m_rgfChatMemberStateChange);
    
         //set global value
         global.player2 = (CSteamID)update.m_ulSteamIDMakingChange;

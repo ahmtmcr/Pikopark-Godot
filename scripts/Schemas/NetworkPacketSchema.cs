@@ -39,10 +39,18 @@ public struct OtherPlayer : IFlatbufferObject
 
   public int Action { get { int o = __p.__offset(4); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
   public NetworkPacket.Vec2? Pos { get { int o = __p.__offset(6); return o != 0 ? (NetworkPacket.Vec2?)(new NetworkPacket.Vec2()).__assign(o + __p.bb_pos, __p.bb) : null; } }
+  public string Anim { get { int o = __p.__offset(8); return o != 0 ? __p.__string(o + __p.bb_pos) : null; } }
+#if ENABLE_SPAN_T
+  public Span<byte> GetAnimBytes() { return __p.__vector_as_span<byte>(8, 1); }
+#else
+  public ArraySegment<byte>? GetAnimBytes() { return __p.__vector_as_arraysegment(8); }
+#endif
+  public byte[] GetAnimArray() { return __p.__vector_as_array<byte>(8); }
 
-  public static void StartOtherPlayer(FlatBufferBuilder builder) { builder.StartTable(2); }
+  public static void StartOtherPlayer(FlatBufferBuilder builder) { builder.StartTable(3); }
   public static void AddAction(FlatBufferBuilder builder, int action) { builder.AddInt(0, action, 0); }
   public static void AddPos(FlatBufferBuilder builder, Offset<NetworkPacket.Vec2> posOffset) { builder.AddStruct(1, posOffset.Value, 0); }
+  public static void AddAnim(FlatBufferBuilder builder, StringOffset animOffset) { builder.AddOffset(2, animOffset.Value, 0); }
   public static Offset<NetworkPacket.OtherPlayer> EndOtherPlayer(FlatBufferBuilder builder) {
     int o = builder.EndTable();
     return new Offset<NetworkPacket.OtherPlayer>(o);

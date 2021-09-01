@@ -11,6 +11,8 @@ public class packetReceiver : Node
 
     KinematicBody2D player1;
     KinematicBody2D player2;
+    AnimatedSprite player1Anim;
+    AnimatedSprite player2Anim;
 
 
     Global global;
@@ -26,6 +28,9 @@ public class packetReceiver : Node
         
         player1 = GetNode("/root/game/player1") as KinematicBody2D;
         player2 = GetNode("/root/game/player2") as KinematicBody2D;    
+
+        player1Anim = GetNode("/root/game/player1/Sprite") as AnimatedSprite;
+        player2Anim = GetNode("/root/game/player2/Sprite") as AnimatedSprite;
 
 
     }
@@ -73,15 +78,20 @@ public class packetReceiver : Node
      private void moveOtherPlayer(NetworkPacket.OtherPlayer otherPlayer)
      {
          NetworkPacket.Vec2 pos = otherPlayer.Pos.Value;
+         var a = otherPlayer.Anim;
+         
 
          if(global.playingAsHost)
          {
              player2.Transform = new Transform2D(0, new Vector2(pos.X, pos.Y));
+             player2Anim.Animation = a;
          }
          else
          {
              player1.Transform = new Transform2D(0, new Vector2(pos.X, pos.Y));
+             player2Anim.Animation = a;
          }
      }
+  
     
 }
