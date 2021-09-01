@@ -31,11 +31,6 @@ window/stretch/aspect="keep"
 
 singletons=[  ]
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
 [global]
 
 window=false
@@ -71,7 +66,6 @@ ui_down={
  ]
 }
 
->>>>>>> Stashed changes
 [physics]
 
 common/enable_pause_aware_picking=true

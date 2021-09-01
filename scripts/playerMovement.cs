@@ -7,30 +7,15 @@ using FlatBuffers;
 public class playerMovement : KinematicBody2D
 {
   
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    
-    int speed = 200;
-=======
-=======
->>>>>>> Stashed changes
    
     int speed = 150;
     float gravity = 500f;
->>>>>>> Stashed changes
     bool sendPacketReady;
     Vector2 velocity;
     KinematicBody2D player1;
     KinematicBody2D player2;
     
     Timer sendPacketTimer;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-    AnimatedSprite playerSprite;
-
-
-=======
     AnimatedSprite playerSprite;
 
 
@@ -41,16 +26,7 @@ public class playerMovement : KinematicBody2D
     
     
     
->>>>>>> Stashed changes
 
-
-    
-
-    
-    
-    
-
->>>>>>> Stashed changes
 
     Global global;
     
@@ -65,19 +41,10 @@ public class playerMovement : KinematicBody2D
         player1 = GetNode("/root/game/player1") as KinematicBody2D;
         player2 = GetNode("/root/game/player2") as KinematicBody2D;
         sendPacketTimer = GetNode("/root/game/sendPacketTimer") as Timer;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
         playerSprite = GetNode("Sprite") as AnimatedSprite;
         
        
        
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
         sendPacketTimer.Connect("timeout", this, "_on_timeout");
     
@@ -86,31 +53,8 @@ public class playerMovement : KinematicBody2D
     
    
    //-------------------LOCAL MOVEMENT--------------------
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    public override void _Input(InputEvent @event)
-    {
-        velocity = new Vector2();
-        if(Input.IsActionPressed("ui_right"))
-            velocity.x +=1;
-        if(Input.IsActionPressed("ui_left"))
-            velocity.x -=1;
-        if(Input.IsActionPressed("ui_down"))
-            velocity.y +=1;
-        if(Input.IsActionPressed("ui_up"))
-            velocity.y -=1;
-        
-        velocity = velocity.Normalized() * speed;
-    }
-
-    public override void _PhysicsProcess(float delta) => velocity = MoveAndSlide(velocity);
-=======
 
 
-=======
-
-
->>>>>>> Stashed changes
      public override void _PhysicsProcess(float delta) 
     {
         
@@ -174,10 +118,6 @@ public class playerMovement : KinematicBody2D
 
 
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     
     
    
