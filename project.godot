@@ -32,7 +32,10 @@ window/stretch/aspect="keep"
 singletons=[  ]
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 [global]
 
 window=false

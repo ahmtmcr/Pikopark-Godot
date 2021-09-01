@@ -8,9 +8,12 @@ public class playerMovement : KinematicBody2D
 {
   
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     
     int speed = 200;
 =======
+=======
+>>>>>>> Stashed changes
    
     int speed = 150;
     float gravity = 500f;
@@ -22,10 +25,23 @@ public class playerMovement : KinematicBody2D
     
     Timer sendPacketTimer;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
     AnimatedSprite playerSprite;
 
 
+=======
+    AnimatedSprite playerSprite;
+
+
+
+
+    
+
+    
+    
+    
+>>>>>>> Stashed changes
 
 
     
@@ -50,11 +66,17 @@ public class playerMovement : KinematicBody2D
         player2 = GetNode("/root/game/player2") as KinematicBody2D;
         sendPacketTimer = GetNode("/root/game/sendPacketTimer") as Timer;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
         playerSprite = GetNode("Sprite") as AnimatedSprite;
         
        
        
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
         sendPacketTimer.Connect("timeout", this, "_on_timeout");
@@ -64,6 +86,7 @@ public class playerMovement : KinematicBody2D
     
    
    //-------------------LOCAL MOVEMENT--------------------
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     public override void _Input(InputEvent @event)
     {
@@ -84,6 +107,10 @@ public class playerMovement : KinematicBody2D
 =======
 
 
+=======
+
+
+>>>>>>> Stashed changes
      public override void _PhysicsProcess(float delta) 
     {
         
@@ -147,6 +174,9 @@ public class playerMovement : KinematicBody2D
 
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     
     
