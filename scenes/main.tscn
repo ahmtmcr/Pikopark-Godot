@@ -98,6 +98,7 @@ margin_top = 139.525
 margin_right = 292.58
 margin_bottom = 160.525
 custom_fonts/font = SubResource( 3 )
+disabled = true
 text = "Join Selected"
 __meta__ = {
 "_edit_use_anchors_": false
