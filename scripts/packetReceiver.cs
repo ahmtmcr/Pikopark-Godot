@@ -24,9 +24,15 @@ public class packetReceiver : Node
         Callback_P2PSessionRequest = Callback<P2PSessionRequest_t>.Create(OnP2PSessionRequest);
         Callback_P2PSessionConnectFailed = Callback<P2PSessionConnectFail_t>.Create(OnP2PSessionConnectFailed);
         
-        player1 = GetNode("/root/game/player1") as KinematicBody2D;
-        player2 = GetNode("/root/game/player2") as KinematicBody2D;    
+        player1 = GetParent().GetParent().GetNode("player1") as KinematicBody2D;
+        player2 = GetParent().GetParent().GetNode("player2") as KinematicBody2D;  
 
+<<<<<<< Updated upstream
+=======
+        player1Anim = GetParent().GetParent().GetNode("player1/Sprite") as AnimatedSprite;
+        player2Anim = GetParent().GetParent().GetNode("player2/Sprite") as AnimatedSprite;
+
+>>>>>>> Stashed changes
 
     }
 
@@ -73,14 +79,33 @@ public class packetReceiver : Node
      private void moveOtherPlayer(NetworkPacket.OtherPlayer otherPlayer)
      {
          NetworkPacket.Vec2 pos = otherPlayer.Pos.Value;
+<<<<<<< Updated upstream
+=======
+         var animationState = otherPlayer.Anim;
+         bool playerLookDirection = otherPlayer.Direction;
+         
+         
+         
+         
+>>>>>>> Stashed changes
 
          if(global.playingAsHost)
          {
              player2.Transform = new Transform2D(0, new Vector2(pos.X, pos.Y));
+<<<<<<< Updated upstream
+=======
+             player2Anim.Animation = animationState;
+             player2Anim.FlipH = playerLookDirection;
+>>>>>>> Stashed changes
          }
          else
          {
              player1.Transform = new Transform2D(0, new Vector2(pos.X, pos.Y));
+<<<<<<< Updated upstream
+=======
+             player1Anim.Animation = animationState;
+             player1Anim.FlipH = playerLookDirection;
+>>>>>>> Stashed changes
          }
      }
     

@@ -7,8 +7,8 @@ public class initializePlayer : Node
     public override void _Ready()
     {
         Global global = GetNode("/root/Global") as Global;
-        KinematicBody2D player1 = GetNode("/root/game/player1") as KinematicBody2D;
-        KinematicBody2D player2 = GetNode("/root/game/player2") as KinematicBody2D;
+        KinematicBody2D player1 = GetParent().GetParent().GetNode("player1") as KinematicBody2D;
+        KinematicBody2D player2 = GetParent().GetParent().GetNode("player2") as KinematicBody2D;
 
         if (global.playingAsHost)
         {
